@@ -28,9 +28,14 @@ void ExtendNSLog(const char *file, int lineNumber, const char *functionName, NSS
     
     // End using variable argument list.
     va_end (ap);
+	
+	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+	[formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss.SSS"];
+	NSString *currentDateString = [formatter stringFromDate:[NSDate date]];
     
     NSString *fileName = [[NSString stringWithUTF8String:file] lastPathComponent];
-    fprintf(stderr, "(%s) (%s:%d) %s",
-            functionName, [fileName UTF8String],
-            lineNumber, [body UTF8String]);
+	fprintf(stderr, "%s %s (%s:%d) %s",
+			[currentDateString UTF8String],
+			functionName, [fileName UTF8String],
+			lineNumber, [body UTF8String]);
 }
