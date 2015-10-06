@@ -14,6 +14,9 @@
 #define NSLogPoint(point) NSLog(@"%s x:%.4f, y:%.4f", #point, point.x, point.y)
 #define NSLog(args...) ExtendNSLog(__FILE__,__LINE__,__PRETTY_FUNCTION__,args);
 #else
+#define NSLogRect(x...)
+#define NSLogSize(x...)
+#define NSLogPoint(x...)
 #define NSLog(x...)
 #endif
 
